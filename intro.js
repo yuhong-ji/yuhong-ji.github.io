@@ -55,7 +55,7 @@ const logoMaterial = new THREE.ShaderMaterial({
   `,
 });
 
-const logo = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 3.6), logoMaterial);
+const logo = new THREE.Mesh(new THREE.PlaneGeometry(2.3, 2.3), logoMaterial);
 scene.add(logo);
 
 new THREE.TextureLoader().load('assets/logo-round.png', (t) => {
@@ -67,9 +67,9 @@ new THREE.TextureLoader().load('assets/logo-round.png', (t) => {
 const pCount = 1400;
 const pPos = new Float32Array(pCount * 3);
 for (let i = 0; i < pCount; i++) {
-  const r = 2.4 + Math.random() * 1.6;
+  const r = 1.8 + Math.random() * 1.1;
   const a = Math.random() * Math.PI * 2;
-  const y = (Math.random() - 0.5) * 0.8;
+  const y = (Math.random() - 0.5) * 0.6;
   pPos[i * 3] = Math.cos(a) * r;
   pPos[i * 3 + 1] = y;
   pPos[i * 3 + 2] = Math.sin(a) * r;
@@ -109,8 +109,8 @@ function makeTextTexture() {
 const textMat = new THREE.MeshBasicMaterial({
   map: makeTextTexture(), transparent: true, depthWrite: false, opacity: 0,
 });
-const text = new THREE.Mesh(new THREE.PlaneGeometry(5.2, 1.42), textMat);
-text.position.y = -2.2;
+const text = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 0.98), textMat);
+text.position.y = -1.55;
 scene.add(text);
 
 /* ---------- 动画循环 ---------- */
