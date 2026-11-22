@@ -113,8 +113,6 @@ section{position:relative}
 
 /* ============ JOIN / BANNER ============ */
 #join{background:linear-gradient(rgba(247,245,243,.12),rgba(247,245,243,.12)),url('assets/london.jpg') center 42%/cover no-repeat fixed}
-/* 深灰照片上的文字可读性保障 */
-#projects .sec-head h2,#projects .sec-head p,#projects .proj-meta b,#projects .proj-meta small,.num b,.num span,#join .sec-head h2,#join .sec-head p{text-shadow:0 0 20px rgba(255,255,255,.95),0 0 7px rgba(255,255,255,.9)}
 .banner{position:relative;height:clamp(400px,44vw,540px);overflow:hidden;background:linear-gradient(180deg,#B9A6C6 0%,#CBB7CE 30%,#DFCAD3 58%,#EFDFDC 82%,#F5EAE6 100%);display:flex;align-items:center;justify-content:center;text-align:center}
 .banner .sky-glow{position:absolute;left:50%;bottom:-30%;width:80%;height:70%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(255,244,236,.75),transparent 68%);filter:blur(10px)}
 .banner .balloons{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55}
@@ -232,6 +230,8 @@ section{position:relative}
 .banner .sky-glow,.banner .balloons,.banner .horizon{display:none}
 .banner-inner .b-slogan{font-size:clamp(24px,3vw,38px);letter-spacing:.2em;text-indent:.2em;text-shadow:none}
 .banner-inner .b-sub{letter-spacing:.34em;text-indent:.34em}
+/* 兜底：磨砂玻璃上的文字不用任何发光描边 */
+#projects .sec-head h2,#projects .sec-head p,#projects .proj-meta b,#projects .proj-meta small,.num b,.num span,#join .sec-head h2,#join .sec-head p{text-shadow:none}
 </style>
 </head>
 <body>
