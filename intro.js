@@ -1,4 +1,4 @@
-// 拓维科技 3D 开场动画 —— Three.js(WebGL) + GLSL 着色器 + Canvas 2D + WAAPI
+// 拓维科技 3D 开场动画 —— Three.js(WebGL) + GLSL + Canvas 2D + WAAPI
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
 const container = document.getElementById('intro');
@@ -12,12 +12,13 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 0, 9);
+camera.lookAt(0, 0, 0);
 
-/* ---------- 圆形 Logo 圆盘：自定义 GLSL 着色器（菲涅尔光晕 + 流光扫描） ---------- */
+/* ---------- 方形 Logo：GLSL 只做轻微扫光与淡入，不再画圆盘/银光 ---------- */
 const logoUniforms = {
   uTexture: { value: null },
   uTime: { value: 0 },
-  uGlow: { value: new THREE.Color('#A58EA4') },
+  uOpacity: { value: 0 },
 };
 const logoMaterial = new THREE.ShaderMaterial({
   uniforms: logoUniforms,
@@ -26,50 +27,35 @@ const logoMaterial = new THREE.ShaderMaterial({
   side: THREE.DoubleSide,
   vertexShader: /* glsl */ `
     varying vec2 vUv;
-    varying vec3 vNormal;
-    varying vec3 vViewDir;
     void main(){
       vUv = uv;
-      vec4 mv = modelViewMatrix * vec4(position, 1.0);
-      vNormal = normalize(normalMatrix * normal);
-      vViewDir = normalize(-mv.xyz);
-      gl_Position = projectionMatrix * mv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
   `,
   fragmentShader: /* glsl */ `
     uniform sampler2D uTexture;
     uniform float uTime;
-    uniform vec3 uGlow;
+    uniform float uOpacity;
     varying vec2 vUv;
-    varying vec3 vNormal;
-    varying vec3 vViewDir;
     void main(){
       vec4 tex = texture2D(uTexture, vUv);
-      float ndv = abs(dot(normalize(vNormal), normalize(vViewDir)));
-      float fresnel = pow(1.0 - ndv, 2.6);
-      vec3 glow = uGlow * fresnel * 1.6;
-      float scan = 0.9 + 0.12 * sin(vUv.x * 12.0 - uTime * 2.4);
-      vec3 col = tex.rgb * scan + glow;
-      gl_FragColor = vec4(col, tex.a + fresnel * 0.7);
+      float sweep = 0.98 + 0.02 * sin(vUv.x * 6.0 - uTime * 1.2);
+      gl_FragColor = vec4(tex.rgb * sweep, tex.a * uOpacity);
     }
   `,
 });
 
-const logo = new THREE.Mesh(new THREE.PlaneGeometry(2.3, 2.3), logoMaterial);
+// 原图 125×135，按原始比例做方形（长方形）平面；相机不推近，所以是真的小
+const logo = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 1.404), logoMaterial);
 scene.add(logo);
 
-new THREE.TextureLoader().load('assets/logo-round.png', (t) => {
-  t.minFilter = THREE.LinearFilter;
-  logoUniforms.uTexture.value = t;
-});
-
-/* ---------- 粒子光环 ---------- */
-const pCount = 1400;
+/* ---------- 粒子光环：收敛范围，不再铺满整屏 ---------- */
+const pCount = 700;
 const pPos = new Float32Array(pCount * 3);
 for (let i = 0; i < pCount; i++) {
-  const r = 1.8 + Math.random() * 1.1;
+  const r = 1.15 + Math.random() * 0.75;
   const a = Math.random() * Math.PI * 2;
-  const y = (Math.random() - 0.5) * 0.6;
+  const y = (Math.random() - 0.5) * 0.45;
   pPos[i * 3] = Math.cos(a) * r;
   pPos[i * 3 + 1] = y;
   pPos[i * 3 + 2] = Math.sin(a) * r;
@@ -77,14 +63,14 @@ for (let i = 0; i < pCount; i++) {
 const pGeo = new THREE.BufferGeometry();
 pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
 const pMat = new THREE.PointsMaterial({
-  color: 0xB79BB8, size: 0.022, transparent: true, opacity: 0.8,
+  color: 0xB79BB8, size: 0.018, transparent: true, opacity: 0.65,
   blending: THREE.AdditiveBlending, depthWrite: false,
 });
 const particles = new THREE.Points(pGeo, pMat);
-particles.rotation.x = 0.4;
+particles.rotation.x = 0.35;
 scene.add(particles);
 
-/* ---------- 「無限創新」文字：Canvas 2D 渐变连笔纹理 ---------- */
+/* ---------- 「無限創新」：Canvas 2D 渐变连笔纹理 ---------- */
 function makeTextTexture() {
   const c = document.createElement('canvas');
   c.width = 1024; c.height = 280;
@@ -109,48 +95,51 @@ function makeTextTexture() {
 const textMat = new THREE.MeshBasicMaterial({
   map: makeTextTexture(), transparent: true, depthWrite: false, opacity: 0,
 });
-const text = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 0.98), textMat);
-text.position.y = -1.55;
+const text = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 0.68), textMat);
+text.position.y = -1.05;
 scene.add(text);
 
-/* ---------- 动画循环 ---------- */
+/* ---------- 动画 ---------- */
 const clock = new THREE.Clock();
 let done = false;
+const FLIP = 2.4;   // 单次翻转时长
+const TOTAL = 3.9;  // 总时长
 
 function animate() {
   const t = clock.getElapsedTime();
   logoUniforms.uTime.value = t;
 
-  // 相机推近 + 轻微视差
-  const zoom = 1 - Math.min(t / 3.4, 1) * 0.35;
-  camera.position.z = 9 * zoom;
-  camera.position.x = Math.sin(t * 0.4) * 0.4;
-  camera.lookAt(0, 0, 0);
-
-  // logo 旋转飞入
-  if (t < 1.8) {
-    const p = t / 1.8;
-    const ease = 1 - Math.pow(1 - p, 4);
-    logo.rotation.y = (1 - ease) * Math.PI * 2.5;
-    logo.scale.setScalar(0.3 + ease * 0.7);
+  // 一次干净的 3D 翻转飞入：远处 -90°/50° → 正面，带轻微回弹，不再空转多圈
+  if (t < FLIP) {
+    const p = t / FLIP;
+    const e = 1 - Math.pow(1 - p, 4);
+    const overshoot = p > 0.72 ? Math.sin((p - 0.72) / 0.28 * Math.PI) * 0.06 : 0;
+    logo.rotation.x = (1 - e) * (-Math.PI / 2);
+    logo.rotation.y = (1 - e) * (50 * Math.PI / 180);
+    logo.position.z = (1 - e) * -6;
+    logo.scale.setScalar(0.25 + e * 0.75 + overshoot);
+    logoUniforms.uOpacity.value = Math.min(p * 2.4, 1);
   } else {
-    logo.rotation.y = Math.sin(t * 0.5) * 0.06;
+    logo.rotation.x = 0;
+    logo.rotation.y = Math.sin(t * 0.45) * 0.035;
+    logo.position.z = 0;
+    logo.position.y = Math.sin(t * 1.2) * 0.025;
     logo.scale.setScalar(1);
+    logoUniforms.uOpacity.value = 1;
   }
 
-  // 粒子旋转
-  particles.rotation.y = t * 0.25;
-  particles.rotation.z = Math.sin(t * 0.18) * 0.15;
+  particles.rotation.y = t * 0.22;
+  particles.rotation.z = Math.sin(t * 0.18) * 0.12;
 
-  // 文字淡入
-  if (t > 1.1) {
-    textMat.opacity = Math.min((t - 1.1) / 0.9, 1);
-    text.position.y = -2.2 + (1 - Math.min((t - 1.1) / 0.9, 1)) * 0.4;
+  if (t > 1.15) {
+    const q = Math.min((t - 1.15) / 0.9, 1);
+    textMat.opacity = q;
+    text.position.y = -1.05 - (1 - q) * 0.25;
   }
 
   renderer.render(scene, camera);
 
-  if (!done && t > 3.9) {
+  if (!done && t > TOTAL) {
     done = true;
     fadeOut();
   } else {
@@ -158,7 +147,7 @@ function animate() {
   }
 }
 
-/* ---------- WAAPI 淡出整个开场层 ---------- */
+/* ---------- WAAPI 淡出 ---------- */
 function fadeOut() {
   const anim = container.animate(
     [{ opacity: 1 }, { opacity: 0 }],
@@ -181,7 +170,6 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// 等字体加载后重绘文字纹理，确保连笔字体生效
 if (document.fonts && document.fonts.load) {
   document.fonts.load('italic 150px "Zhi Mang Xing"').then(() => {
     textMat.map = makeTextTexture();
@@ -189,4 +177,16 @@ if (document.fonts && document.fonts.load) {
   }).catch(() => {});
 }
 
-animate();
+let started = false;
+function start() {
+  if (started) return;
+  started = true;
+  clock.start();
+  animate();
+}
+new THREE.TextureLoader().load('assets/logo.png', (t) => {
+  t.minFilter = THREE.LinearFilter;
+  logoUniforms.uTexture.value = t;
+  start();
+});
+setTimeout(start, 1500); // 图片加载慢时的兜底
