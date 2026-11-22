@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>拓维科技 · 无限创新</title>
+<title>TuoWei科技 · 无限创新</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -204,6 +204,34 @@ section{position:relative}
 /* ============ 3D LOGO 开场动画（WebGL/Three.js） ============ */
 .intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 120% at 50% 50%,#2A2530 0%,#1D1A1E 60%,#121014 100%);overflow:hidden}
 .intro canvas{display:block}
+
+/* ============ 哑光半透明磨砂玻璃（无塑料感） ============ */
+/* 只提亮一点点、只做高斯模糊，不加饱和/不加白色硬边/不加高光反光/不加硬投影 */
+.sec-head,.proj-meta,.num-grid,.banner-inner,.searchbar,.sidebar,.results,.card{
+  background:rgba(246,244,242,.42);
+  backdrop-filter:blur(20px) saturate(102%);
+  -webkit-backdrop-filter:blur(20px) saturate(102%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 4px 24px rgba(30,26,34,.045);
+  border-radius:16px;
+}
+.sec-head{padding:clamp(56px,7vw,104px) 40px 44px}
+.proj-meta{padding:26px 40px;margin-bottom:24px}
+.num-grid{padding:30px 22px}
+.banner-inner{padding:46px 60px}
+.card{border-radius:18px}
+.card:hover{box-shadow:0 14px 40px rgba(30,26,34,.08)}
+.searchbar{background:rgba(246,244,242,.5);border-radius:999px}
+.sidebar,.results{padding:24px 28px}
+.clear-btn{background:rgba(255,255,255,.28)}
+.job-tags span,.card-foot span{background:rgba(255,255,255,.26)}
+.banner-inner .b-logo{background:rgba(255,255,255,.42);box-shadow:none;border-radius:12px}
+
+/* 「加入我们」区：去掉突兀的紫色黄昏渐变与气球，统一回伦敦图 + 玻璃 */
+.banner{background:transparent}
+.banner .sky-glow,.banner .balloons,.banner .horizon{display:none}
+.banner-inner .b-slogan{font-size:clamp(24px,3vw,38px);letter-spacing:.2em;text-indent:.2em;text-shadow:none}
+.banner-inner .b-sub{letter-spacing:.34em;text-indent:.34em}
 </style>
 </head>
 <body>
@@ -218,7 +246,7 @@ section{position:relative}
   <a class="brand" href="#home">
     <img src="data:image/png;base64,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" alt="拓维科技">
     <span class="brand-divider"></span>
-    <span class="brand-cn">拓维科技</span>
+    <span class="brand-cn">TuoWei科技</span>
   </a>
   <nav class="menu">
     <a href="#projects" data-nav="projects">项目</a>
@@ -299,8 +327,8 @@ section{position:relative}
     <div class="horizon"></div>
     <div class="banner-inner">
       <div class="b-logo"><img src="data:image/png;base64,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" alt="拓维科技"></div>
-      <div class="b-slogan">与拓维同行 · 成就无限</div>
-      <div class="b-sub">JOIN US · CREATE WHAT'S NEXT</div>
+      <div class="b-slogan">加入我们</div>
+      <div class="b-sub">JOIN US</div>
       <button class="view-jobs" id="viewJobsBtn">查看开放职位 ↓</button>
     </div>
   </div>
@@ -356,7 +384,7 @@ const projects=[
   {id:'01',cat:'诊所管理',title:'雅舒美口腔连锁管理软件',en:'Yashumei Dental Management',desc:'为口腔连锁机构打造的一体化管理平台，贯通预约、诊疗、收费、库存与多门店管控，让每一家门店都运行在同一个节奏上。',tags:['连锁管理','诊疗一体化','V5.0'],cover:'assets/yashumei-cover.png'}
 ];
 const jobs=[
-  {title:'高级前端开发工程师',cat:'技术',tags:['技术','全职','3-5年'],salary:'25–45K · 15薪',desc:'负责核心产品前端架构与体验优化，参与设计系统建设，追求极致的交互细节。'},
+  {title:'高级前端开发工程师',cat:'技术',tags:['技术','全职','3-5年'],salary:'',desc:'负责核心产品前端架构与体验优化，参与设计系统建设，追求极致的交互细节。'},
   {title:'资深产品经理（AI 方向）',cat:'产品',tags:['产品','全职','5年以上'],salary:'30–50K · 15薪',desc:'定义 AI 产品的核心能力边界，从场景洞察到方案落地，推动产品持续迭代。'},
   {title:'视觉与品牌设计师',cat:'设计',tags:['设计','全职','3-5年'],salary:'18–30K · 14薪',desc:'主导品牌视觉体系的构建与延展，以克制的设计语言表达科技与秩序。'},
   {title:'后端开发工程师（Go）',cat:'技术',tags:['技术','全职','3-5年'],salary:'22–40K · 15薪',desc:'构建高并发、高可用的服务端系统，参与云原生基础设施的设计与演进。'},
@@ -403,7 +431,7 @@ function renderJobs(){
     if(b.classList.contains('done'))return;
     const email='yuhongji159159a@outlook.com';
     const title=b.dataset.title;
-    const subject=encodeURIComponent('应聘 · '+title+' · 拓维科技');
+    const subject=encodeURIComponent('应聘 · '+title+' · TuoWei科技');
     const body=encodeURIComponent('你好，\n\n我想应聘「'+title+'」这个职位，附件是我的简历。\n\n谢谢！');
     window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
     b.classList.add('done');b.textContent='已加入';
@@ -468,13 +496,13 @@ joinBtn.addEventListener('click',()=>{
   const email='yuhongji159159a@outlook.com';
   joinEmail.value=email;
   const subject=encodeURIComponent('应聘 · 拓维科技');
-  const body=encodeURIComponent('你好，\n\n我想应聘拓维科技的职位，附件是我的简历。\n\n谢谢！');
+  const body=encodeURIComponent('你好，\n\n我想应聘TuoWei科技的职位，附件是我的简历。\n\n谢谢！');
   ctaNote.textContent='正在打开邮箱软件，收件人已自动填好';
   window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
 });
 
 /* ---------- 3D LOGO INTRO（Three.js 模块） ---------- */
 </script>
-<script type="module" src="intro.js"></script>
+<script type="module" src="intro-v2.js"></script>
 </body>
 </html>
