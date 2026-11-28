@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拓维织页 TwinePage · Web 版</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="dark">
+  <canvas id="glbg" aria-hidden="true"></canvas>
+
+  <div id="app">
+    <header class="topbar glass">
+      <div class="brand">
+        <span class="mark">TW</span>
+        <span class="brand-name">拓维织页 <em>TwinePage</em></span>
+      </div>
+
+      <nav class="views">
+        <button v-for="v in views" :key="v.id" :class="['tab', { active: view === v.id }]" @click="view = v.id">{{ v.label }}</button>
+      </nav>
+
+      <div class="toolbar">
+        <button class="tool" @click="addNode">＋ 织元</button>
+        <button :class="['tool', { active: linkMode }]" @click="toggleLinkMode">织线</button>
+        <button class="tool" @click="zoom(1.15)">＋</button>
+        <button class="tool" @click="zoom(0.87)">－</button>
+        <button :class="['tool', { active: theme === 'dark' }]" @click="setTheme('dark')">黑</button>
+        <button :class="['tool', { active: theme === 'light' }]" @click="setTheme('light')">白</button>
+        <label class="switch"><input type="checkbox" v-model="effects" /> 特效</label>
+        <button class="tool disabled" disabled>登录（暂缓）</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section v-show="view === 'canvas'" class="canvas-wrap glass">
+        <canvas ref="canvasRef" id="graph"
+                @pointerdown="onDown" @pointermove="onMove"
+                @pointerup="onUp" @pointercancel="onUp"
+                @wheel.prevent="onWheel" @dblclick="onDblClick"></canvas>
+        <div class="canvas-hint">拖动画布 · 滚轮缩放 · 双击空白处新建 · 织线模式依次点两张卡片</div>
+      </section>
+
+      <section v-show="view === 'timeline'" class="list-view glass">
+        <h2>时序平铺</h2>
+        <ul>
+          <li v-for="n in sortedNodes" :key="n.id" @click="focusNode(n)">
+            <span class="dot" :style="{ background: n.color }"></span>
+            <b>{{ n.title }}</b><span class="meta">{{ n.type }} · {{ n.body }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section v-show="view === 'checklist'" class="list-view glass">
+        <h2>清单聚合</h2>
+        <ul class="check-list">
+          <li v-for="n in nodes" :key="n.id">
+            <label><input type="checkbox" v-model="n.done" /> <b>{{ n.title }}</b></label>
+            <span class="meta">{{ n.type }}</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="statusbar glass">
+      <span>织元 {{ nodes.length }} · 织线 {{ links.length }}</span>
+      <span>{{ selected ? '已选中：' + selected.title : '本地优先 · 无账号 · 无云端上传' }}</span>
+    </footer>
+  </div>
+
+  <script src="vendor/vue.global.prod.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
