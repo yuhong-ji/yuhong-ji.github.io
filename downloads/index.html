@@ -37,12 +37,12 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;border-t
 </header>
 <main>
   <h1>下载拓维织页</h1>
-  <p class="lead">当前为 0.6.1 极速原生桌面 EXE：去掉了内嵌 .NET 运行时与启动解压，体积从上百 MB 降到 2.1 MB，实测窗口 0.47 秒出现。Win32 窗口宿主 + 内嵌 WebView2，不打开外部浏览器、不释放网页文件；Vue 3 + TypeScript 界面资源编译进 EXE，WebGPU 失败自动回退 WebGL。运行需系统已装 .NET 8 桌面运行时与 WebView2 运行时。天气与自动化默认开启，AI 插件默认关闭。</p>
-  <div class="notice"><strong>下载一直转圈？</strong>实测是网络链路慢：同样的文件 15 秒只传了 0.9 MB。除了换成全新文件名，另提供 <strong>708 KB 的 ZIP</strong>（解压后就是同一个 EXE），体积只有原来的三分之一，最容易下完。请先取消下载面板里所有转圈旧任务，再点下面按钮；也可访问 <a href="get.html">get.html</a>（全新地址、无缓存）。</div>
+  <p class="lead">0.6.2：换成用户设计的蓝色对勾 logo，去掉示例任务与占位文案，界面改为克制的扁平样式。保留专注模式与勿扰模式（Win32 置顶、保持唤醒、应用内广告请求拦截，按需打开 Windows 专注助手）；扩展开关改为连接器：天气走真实接口、企业微信走官方应用接口、微信/QQ/企业 QQ 明确标注平台未开放。2.1 MB 单文件 EXE，Win32 窗口 + 内嵌 WebView2，不打开外部浏览器。运行需 .NET 8 桌面运行时与 WebView2 运行时。</p>
+  <div class="notice"><strong>下载卡住？</strong>本站域名传输慢，推荐 <strong>GitHub 直链 ZIP（714 KB）</strong> 或 <a href="get.html">get.html</a>。请先取消下载面板里所有转圈的旧任务。</div>
   <div class="grid">
-    <div class="card"><div class="tag">WINDOWS · EXE · 0.6.1</div><h2>原生单文件 EXE · 极速版</h2><p>2.1 MB，新文件名不与历史下载冲突；双击即用，无安装、无浏览器窗口、无启动解压。已实测界面完整渲染。</p><a class="btn" href="TwinePage-0.6.1-Native-Fast.exe" download="TwinePage-0.6.1-Native-Fast.exe">下载 EXE · 2.1 MB</a></div>
-    <div class="card"><div class="tag">网络慢首选 · 708 KB</div><h2>ZIP 压缩包</h2><p>解压后就是同一个 EXE，体积仅为 EXE 的三分之一，最容易下载完成。</p><a class="btn" href="TwinePage-0.6.1-Native-Fast.zip" download="TwinePage-0.6.1-Native-Fast.zip">下载 ZIP</a></div>
-    <div class="card"><div class="tag">备用直链 · 实测可用</div><h2>GitHub raw · ZIP</h2><p>不走 tuowei.cc.cd，实测 20 秒内把 708 KB 完整下完；本站域名同期只传了 392 KB。</p><a class="btn" href="https://raw.githubusercontent.com/yuhong-ji/yuhong-ji.github.io/main/downloads/TwinePage-0.6.1-Native-Fast.zip" target="_blank" rel="noopener">备用下载</a></div>
+    <div class="card"><div class="tag">WINDOWS · EXE · 0.6.2</div><h2>原生单文件 EXE</h2><p>2.1 MB，双击即用；新 logo、无示例任务、专注/勿扰与连接器已接原生宿主。</p><a class="btn" href="TwinePage-0.6.2.exe" download="TwinePage-0.6.2.exe">下载 EXE · 2.1 MB</a></div>
+    <div class="card"><div class="tag">网络慢首选 · 714 KB</div><h2>ZIP 压缩包</h2><p>解压后就是同一个 EXE，体积最小，最容易下载完成。</p><a class="btn" href="TwinePage-0.6.2.zip" download="TwinePage-0.6.2.zip">下载 ZIP</a></div>
+    <div class="card"><div class="tag">备用直链 · 实测可用</div><h2>GitHub raw · ZIP</h2><p>不走 tuowei.cc.cd，实测能完整下完。</p><a class="btn" href="https://raw.githubusercontent.com/yuhong-ji/yuhong-ji.github.io/main/downloads/TwinePage-0.6.2.zip" target="_blank" rel="noopener">备用下载</a></div>
     <div class="card"><div class="tag">运行环境</div><h2>.NET 8 桌面运行时</h2><p>若双击提示缺少运行时，安装微软官方 .NET 8 Desktop Runtime 即可；WebView2 运行时 Windows 10/11 通常已预装。</p><a class="btn" href="https://dotnet.microsoft.com/download/dotnet/8.0/runtime" target="_blank" rel="noopener">下载运行时</a></div>
     <div class="card"><div class="tag">MACOS</div><h2>DMG 镜像</h2><p>macOS 11+，Apple Silicon / Intel。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">IOS · API</div><h2>IPA 安装包</h2><p>iOS 侧载安装包，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
