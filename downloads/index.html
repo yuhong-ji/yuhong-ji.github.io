@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>下载拓维织页 · TuoWei科技</title>
+<style>
+:root{--bg:#F2EFEC;--ink:#262228;--muted:#8A848A;--accent:#8C748B;--line:rgba(34,28,36,.12)}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:28px clamp(20px,5vw,80px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(250,248,246,.86);backdrop-filter:blur(18px)}
+header a{color:var(--ink);text-decoration:none;font-size:13px;letter-spacing:.12em}
+main{max-width:1180px;margin:0 auto;padding:64px 24px 90px}
+h1{font-size:clamp(30px,5vw,52px);font-weight:400;letter-spacing:.06em;margin:0 0 14px}
+p.lead{color:var(--muted);line-height:1.9;max-width:660px;margin:0 0 46px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{border:1px solid var(--line);border-radius:18px;padding:26px;background:rgba(255,255,255,.64);box-shadow:0 12px 40px rgba(52,40,56,.06)}
+.card .tag{font-size:10px;letter-spacing:.22em;color:var(--accent)}
+.card h2{font-size:22px;font-weight:500;margin:12px 0 10px}
+.card p{font-size:13px;color:var(--muted);line-height:1.8;min-height:48px}
+.btn{display:inline-flex;margin-top:16px;padding:10px 18px;border:1px solid var(--ink);border-radius:999px;color:var(--ink);text-decoration:none;font-size:12px;letter-spacing:.1em;transition:.25s}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.wait{border-color:var(--line);color:var(--muted)}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <a href="../index.html">← 返回官网</a>
+  <a href="../index.html">TuoWei科技</a>
+</header>
+<main>
+  <h1>下载拓维织页</h1>
+  <p class="lead">选择适合你设备的版本。Windows 与 Linux 安装包已提供；macOS、iOS IPA 与 Android APK 由 GitHub Actions 自动构建，发布后按钮自动指向正式安装包。</p>
+  <div class="grid">
+    <div class="card"><div class="tag">WINDOWS</div><h2>EXE 安装包</h2><p>Windows 10 / 11 x64，含 Qt 运行库，一键安装。</p><a class="btn" href="TwinePage-0.1.0-win64-setup.exe" download>下载 EXE</a></div>
+    <div class="card"><div class="tag">WINDOWS</div><h2>便携 ZIP</h2><p>免安装，解压即用，适合 U 盘携带。</p><a class="btn" href="TwinePage-0.1.0-win64-portable.zip" download>下载 ZIP</a></div>
+    <div class="card"><div class="tag">LINUX</div><h2>DEB 安装包</h2><p>Ubuntu / Debian 桌面版，双击或 dpkg 安装。</p><a class="btn" href="TwinePage-0.1.0-Linux.deb" download>下载 DEB</a></div>
+    <div class="card"><div class="tag">LINUX</div><h2>TAR.GZ 压缩包</h2><p>通用 Linux x64 二进制包，适合其他发行版。</p><a class="btn" href="TwinePage-0.1.0-Linux.tar.gz" download>下载 TAR.GZ</a></div>
+    <div class="card"><div class="tag">MACOS</div><h2>DMG 镜像</h2><p>macOS 11+，Apple Silicon / Intel。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
+    <div class="card"><div class="tag">IOS · API</div><h2>IPA 安装包</h2><p>iOS 侧载安装包，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
+    <div class="card"><div class="tag">ANDROID</div><h2>APK 安装包</h2><p>Android 7.0+ arm64，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
+  </div>
+</main>
+<footer>© 2026 TUOWEI TECHNOLOGY · 拓维织页 TwinePage</footer>
+</body>
+</html>

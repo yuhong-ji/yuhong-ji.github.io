@@ -250,9 +250,8 @@ section{position:relative}
   </a>
   <nav class="menu">
     <a href="#projects" data-nav="projects">项目</a>
-    <a href="#join" data-nav="join">职位</a>
     <a href="#home" data-nav="home">官网主页</a>
-    <a href="twinepage/index.html" data-nav="twinepage">织页体验</a>
+    <a href="downloads/index.html" data-nav="download">下载软件</a>
     <a href="#join" class="login">登录</a>
   </nav>
 </header>
@@ -409,7 +408,15 @@ document.getElementById('projectGrid').innerHTML=projects.map(p=>`
       <div class="desc">${p.desc}</div>
       <div class="card-foot">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
     </div>
-  </article>`).join('');
+  </article>`).join('')+`
+  <article class="card intro-card" style="position:relative;align-self:start;margin-top:48px;max-width:300px;box-shadow:0 18px 60px rgba(52,40,56,.16);border-color:rgba(34,28,36,.14)">
+    <div class="card-body">
+      <div class="cat">${p.en.toUpperCase()}</div>
+      <h3 style="font-size:20px;margin-top:10px">${p.title}</h3>
+      <div class="desc" style="margin-top:14px">${p.desc}</div>
+      <div class="card-foot">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+    </div>
+  </article>`;
 
 /* ---------- JOBS ---------- */
 function renderJobs(){
