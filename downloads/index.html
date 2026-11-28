@@ -31,12 +31,9 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;border-t
 </header>
 <main>
   <h1>下载拓维织页</h1>
-  <p class="lead">当前为 Vue 3 + TypeScript + Vite 构建的静态单文件修复版：HTML/CSS/JS 已内嵌进应用本体，EXE 双击即可打开，修复了上一版把 HTML 当成进程启动的报错。液态玻璃界面、WebGPU（失败回退 WebGL）动态背景、Microsoft To Do 风格任务底座。天气与自动化默认开启，AI 插件默认关闭。</p>
+  <p class="lead">当前为 0.6.0 原生桌面 EXE：Win32 窗口宿主 + 内嵌 WebView2 渲染 HTML/CSS/JS，不再打开外部浏览器，也不再提供网页版安装包。Vue 3 + TypeScript 构建的单文件界面资源直接编译进 EXE；WebGPU 失败自动回退 WebGL。需要系统 WebView2 运行时（Windows 10/11 通常已预装）。天气与自动化默认开启，AI 插件默认关闭。</p>
   <div class="grid">
-    <div class="card"><div class="tag">WINDOWS · WEB</div><h2>EXE 应用（内嵌 HTML）</h2><p>Windows 10 / 11 x64，双击即开。HTML/CSS/JS 已嵌入应用本体，无需安装步骤。</p><a class="btn" href="TwinePage-0.5.1-Web-win64-app.exe" download>下载 EXE</a></div>
-    <div class="card"><div class="tag">WINDOWS · WEB</div><h2>便携 ZIP</h2><p>免安装，解压后打开 index.html 或 START.cmd，HTML/CSS/JS 同样内嵌。</p><a class="btn" href="TwinePage-0.5.1-Web-win64-portable.zip" download>下载 ZIP</a></div>
-    <div class="card"><div class="tag">LINUX · WEB</div><h2>DEB 安装包</h2><p>Ubuntu / Debian 桌面版，安装后执行 twinepage 或从应用菜单打开。</p><a class="btn" href="TwinePage-0.5.1-Web-Linux.deb" download>下载 DEB</a></div>
-    <div class="card"><div class="tag">LINUX · WEB</div><h2>TAR.GZ 压缩包</h2><p>通用 Linux 压缩包，解压后运行 ./twinepage 或直接打开 index.html。</p><a class="btn" href="TwinePage-0.5.1-Web-Linux.tar.gz" download>下载 TAR.GZ</a></div>
+    <div class="card"><div class="tag">WINDOWS · EXE</div><h2>原生单文件 EXE</h2><p>Win32 原生窗口，内嵌 HTML/CSS/JS；不打开外部浏览器、不提供网页文件、无需安装。</p><a class="btn" href="TwinePage-0.6.0-Native-win64.exe" download>下载 EXE</a></div>
     <div class="card"><div class="tag">MACOS</div><h2>DMG 镜像</h2><p>macOS 11+，Apple Silicon / Intel。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">IOS · API</div><h2>IPA 安装包</h2><p>iOS 侧载安装包，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">ANDROID</div><h2>APK 安装包</h2><p>Android 7.0+ arm64，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
