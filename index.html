@@ -505,5 +505,13 @@ joinBtn.addEventListener('click',()=>{
 /* ---------- 3D LOGO INTRO（Three.js 模块） ---------- */
 </script>
 <script type="module" src="intro-v2.js"></script>
+<script>
+/* 兜底：即使开场动画脚本加载失败，也必须在 2.5 秒后显示原站内容 */
+setTimeout(function(){
+  var intro=document.getElementById('intro');
+  if(intro) intro.style.display='none';
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+},2500);
+</script>
 </body>
 </html>

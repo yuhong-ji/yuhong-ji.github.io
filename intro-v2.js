@@ -1,6 +1,6 @@
 // 拓维科技开场 —— Three.js(WebGL) + GLSL + Canvas 2D + WAAPI
 // 无翻转、无圆盘、无粒子：方形 logo 淡入 + 轻微由远及近
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import * as THREE from './three.module.js';
 
 const container = document.getElementById('intro');
 const canvas = document.createElement('canvas');
