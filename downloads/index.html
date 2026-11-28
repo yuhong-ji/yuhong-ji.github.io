@@ -31,12 +31,12 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;border-t
 </header>
 <main>
   <h1>下载拓维织页</h1>
-  <p class="lead">当前为 C++ 原生桌面程序：原生窗口与系统调用由 C++ 负责，界面由本地 HTML/CSS/JS 资源描述并由嵌入式 V8 驱动，无浏览器套壳、无网页服务器。天气、系统接口与第三方 API 默认开启，AI 插件默认关闭。</p>
+  <p class="lead">当前为 Vue 3 + TypeScript + Vite 构建的本地 Web 应用：HTML/CSS 液态玻璃界面、WebGPU（失败回退 WebGL）动态背景、Microsoft To Do 风格任务底座。不依赖 Qt，也不使用 Electron 等浏览器套壳框架；安装包只负责把本地文件放到本机并从快捷方式打开。天气与自动化默认开启，AI 插件默认关闭。</p>
   <div class="grid">
-    <div class="card"><div class="tag">WINDOWS · NATIVE</div><h2>EXE 安装包</h2><p>Windows 10 / 11 x64，C++ 原生程序，一键安装后从桌面快捷方式启动。</p><a class="btn" href="TwinePage-0.3.0-Native-win64-setup.exe" download>下载 EXE</a></div>
-    <div class="card"><div class="tag">WINDOWS · NATIVE</div><h2>便携 ZIP</h2><p>免安装，解压后运行 TwinePage.exe，完整包含原生依赖与本地资源。</p><a class="btn" href="TwinePage-0.3.0-Native-win64-portable.zip" download>下载 ZIP</a></div>
-    <div class="card"><div class="tag">LINUX · NATIVE</div><h2>DEB 安装包</h2><p>C++ 原生版 Linux 依赖适配中，完成后在此提供 Ubuntu / Debian 安装包。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
-    <div class="card"><div class="tag">LINUX · NATIVE</div><h2>TAR.GZ 压缩包</h2><p>通用 Linux 原生压缩包构建中，发布后可下载并直接运行。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
+    <div class="card"><div class="tag">WINDOWS · WEB</div><h2>EXE 安装包</h2><p>Windows 10 / 11 x64，自解压安装，桌面快捷方式直接打开本地应用。</p><a class="btn" href="TwinePage-0.4.0-Web-win64-setup.exe" download>下载 EXE</a></div>
+    <div class="card"><div class="tag">WINDOWS · WEB</div><h2>便携 ZIP</h2><p>免安装，解压后打开 index.html 或 START.cmd，完整包含 Vue/TS 构建产物。</p><a class="btn" href="TwinePage-0.4.0-Web-win64-portable.zip" download>下载 ZIP</a></div>
+    <div class="card"><div class="tag">LINUX · WEB</div><h2>DEB 安装包</h2><p>Ubuntu / Debian 桌面版，安装后执行 twinepage 或从应用菜单打开。</p><a class="btn" href="TwinePage-0.4.0-Web-Linux.deb" download>下载 DEB</a></div>
+    <div class="card"><div class="tag">LINUX · WEB</div><h2>TAR.GZ 压缩包</h2><p>通用 Linux 压缩包，解压后运行 ./twinepage 或打开 index.html。</p><a class="btn" href="TwinePage-0.4.0-Web-Linux.tar.gz" download>下载 TAR.GZ</a></div>
     <div class="card"><div class="tag">MACOS</div><h2>DMG 镜像</h2><p>macOS 11+，Apple Silicon / Intel。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">IOS · API</div><h2>IPA 安装包</h2><p>iOS 侧载安装包，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">ANDROID</div><h2>APK 安装包</h2><p>Android 7.0+ arm64，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
