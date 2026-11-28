@@ -38,9 +38,10 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;border-t
 <main>
   <h1>下载拓维织页</h1>
   <p class="lead">当前为 0.6.1 极速原生桌面 EXE：去掉了内嵌 .NET 运行时与启动解压，体积从上百 MB 降到 2.1 MB，实测窗口 0.47 秒出现。Win32 窗口宿主 + 内嵌 WebView2，不打开外部浏览器、不释放网页文件；Vue 3 + TypeScript 界面资源编译进 EXE，WebGPU 失败自动回退 WebGL。运行需系统已装 .NET 8 桌面运行时与 WebView2 运行时。天气与自动化默认开启，AI 插件默认关闭。</p>
-  <div class="notice"><strong>看到 0.6.0 或还在下载几十 MB 的旧包？</strong>那是浏览器缓存的旧页面和已下线的旧文件（现在访问会 404）。请取消那个下载，按 <strong>Ctrl + F5</strong> 强制刷新；正确版本是 <strong>0.6.1，只有 2.1 MB</strong>，几秒就能下完。也可直接点下方带版本号的按钮。</div>
+  <div class="notice"><strong>下载一直转圈？</strong>服务器上文件是好的（2.1 MB，已实测 200），卡住是浏览器里堆积的同名旧任务和卡住的连接。已换成全新文件名 <strong>TwinePage-0.6.1-Native-Fast.exe</strong>。请先取消下载面板里那些转圈的旧任务，再点下面的按钮；若仍卡住，直接点「备用直链」或访问 <a href="get.html">get.html</a>（全新地址，无缓存）。</div>
   <div class="grid">
-    <div class="card"><div class="tag">WINDOWS · EXE · 0.6.1</div><h2>原生单文件 EXE · 极速版</h2><p>2.1 MB，双击即用，无安装、无浏览器窗口、无启动解压。已实测界面完整渲染。</p><a class="btn" href="TwinePage-0.6.1-Native-win64.exe?v=0.6.1" download="TwinePage-0.6.1-Native-win64.exe">下载 EXE · 2.1 MB</a></div>
+    <div class="card"><div class="tag">WINDOWS · EXE · 0.6.1</div><h2>原生单文件 EXE · 极速版</h2><p>2.1 MB，新文件名不与历史下载冲突；双击即用，无安装、无浏览器窗口、无启动解压。已实测界面完整渲染。</p><a class="btn" href="TwinePage-0.6.1-Native-Fast.exe" download="TwinePage-0.6.1-Native-Fast.exe">下载 EXE · 2.1 MB</a></div>
+    <div class="card"><div class="tag">备用直链</div><h2>raw.githubusercontent.com</h2><p>不走 tuowei.cc.cd，绕开卡住的连接；同一个文件、同样 2,141,070 字节。</p><a class="btn" href="https://raw.githubusercontent.com/yuhong-ji/yuhong-ji.github.io/main/downloads/TwinePage-0.6.1-Native-Fast.exe" target="_blank" rel="noopener">备用下载</a></div>
     <div class="card"><div class="tag">运行环境</div><h2>.NET 8 桌面运行时</h2><p>若双击提示缺少运行时，安装微软官方 .NET 8 Desktop Runtime 即可；WebView2 运行时 Windows 10/11 通常已预装。</p><a class="btn" href="https://dotnet.microsoft.com/download/dotnet/8.0/runtime" target="_blank" rel="noopener">下载运行时</a></div>
     <div class="card"><div class="tag">MACOS</div><h2>DMG 镜像</h2><p>macOS 11+，Apple Silicon / Intel。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">IOS · API</div><h2>IPA 安装包</h2><p>iOS 侧载安装包，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
