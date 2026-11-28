@@ -31,12 +31,12 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;border-t
 </header>
 <main>
   <h1>下载拓维织页</h1>
-  <p class="lead">选择适合你设备的版本。Windows 与 Linux 安装包已提供；macOS、iOS IPA 与 Android APK 由 GitHub Actions 自动构建，发布后按钮自动指向正式安装包。</p>
+  <p class="lead">选择适合你设备的版本。当前为 HTML/Web 版，内置本地网页与浏览器启动器，不再依赖 Qt 运行库。macOS、iOS IPA 与 Android APK 由 GitHub Actions 自动构建，发布后按钮自动指向正式安装包。</p>
   <div class="grid">
-    <div class="card"><div class="tag">WINDOWS</div><h2>EXE 安装包</h2><p>Windows 10 / 11 x64，含 Qt 运行库，一键安装。</p><a class="btn" href="TwinePage-0.1.0-win64-setup.exe" download>下载 EXE</a></div>
-    <div class="card"><div class="tag">WINDOWS</div><h2>便携 ZIP</h2><p>免安装，解压即用，适合 U 盘携带。</p><a class="btn" href="TwinePage-0.1.0-win64-portable.zip" download>下载 ZIP</a></div>
-    <div class="card"><div class="tag">LINUX</div><h2>DEB 安装包</h2><p>Ubuntu / Debian 桌面版，双击或 dpkg 安装。</p><a class="btn" href="TwinePage-0.1.0-Linux.deb" download>下载 DEB</a></div>
-    <div class="card"><div class="tag">LINUX</div><h2>TAR.GZ 压缩包</h2><p>通用 Linux x64 二进制包，适合其他发行版。</p><a class="btn" href="TwinePage-0.1.0-Linux.tar.gz" download>下载 TAR.GZ</a></div>
+    <div class="card"><div class="tag">WINDOWS · WEB</div><h2>EXE 安装包</h2><p>Windows 10 / 11 x64，安装后从桌面快捷方式打开本地网页，无需 Qt 运行库。</p><a class="btn" href="TwinePage-0.2.0-Web-win64-setup.exe" download>下载 EXE</a></div>
+    <div class="card"><div class="tag">WINDOWS · WEB</div><h2>便携 ZIP</h2><p>免安装，解压后打开 index.html 或 START.cmd，适合 U 盘携带。</p><a class="btn" href="TwinePage-0.2.0-Web-win64-portable.zip" download>下载 ZIP</a></div>
+    <div class="card"><div class="tag">LINUX · WEB</div><h2>DEB 安装包</h2><p>Ubuntu / Debian 桌面版，安装后执行 twinepage 或从应用菜单打开。</p><a class="btn" href="TwinePage-0.2.0-Web-Linux.deb" download>下载 DEB</a></div>
+    <div class="card"><div class="tag">LINUX · WEB</div><h2>TAR.GZ 压缩包</h2><p>通用 Linux 压缩包，解压后运行 ./twinepage，无 Qt 依赖。</p><a class="btn" href="TwinePage-0.2.0-Web-Linux.tar.gz" download>下载 TAR.GZ</a></div>
     <div class="card"><div class="tag">MACOS</div><h2>DMG 镜像</h2><p>macOS 11+，Apple Silicon / Intel。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">IOS · API</div><h2>IPA 安装包</h2><p>iOS 侧载安装包，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
     <div class="card"><div class="tag">ANDROID</div><h2>APK 安装包</h2><p>Android 7.0+ arm64，等待 Release 发布。</p><a class="btn wait" href="https://github.com/yuhong-ji/yuhong-ji.github.io/actions">查看构建状态</a></div>
