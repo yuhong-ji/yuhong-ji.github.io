@@ -52,10 +52,10 @@ a{text-decoration:none;color:inherit}
 /* ============ HERO ============ */
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden;background:linear-gradient(160deg,#6E626F 0%,#4A404E 55%,#332C38 100%)}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.03);will-change:transform}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,25,.42) 0%,rgba(20,15,25,.12) 35%,rgba(20,15,25,.55) 100%)}
-.hero-center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
-.hero-title{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(44px,6.4vw,88px);font-weight:400;line-height:1.15;letter-spacing:.18em;text-indent:.18em;text-shadow:0 6px 44px rgba(0,0,0,.2);animation:heroIn 1.4s cubic-bezier(.22,.61,.36,1) both}
-.hero-en{margin-top:24px;font-size:10px;font-weight:400;font-style:italic;letter-spacing:.5em;text-indent:.5em;color:rgba(255,255,255,.72);animation:heroIn 1.4s .25s cubic-bezier(.22,.61,.36,1) both}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,25,.42) 0%,rgba(20,15,25,.24) 35%,rgba(20,15,25,.55) 100%)}
+.hero-center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,.86);text-align:center}
+.hero-title{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(44px,6.4vw,88px);font-weight:400;line-height:1.15;letter-spacing:.18em;text-indent:.18em;text-shadow:0 4px 70px rgba(0,0,0,.3),0 0 28px rgba(255,255,255,.14);animation:heroIn 1.4s cubic-bezier(.22,.61,.36,1) both}
+.hero-en{margin-top:24px;font-size:10px;font-weight:400;font-style:italic;letter-spacing:.5em;text-indent:.5em;color:rgba(255,255,255,.6);animation:heroIn 1.4s .25s cubic-bezier(.22,.61,.36,1) both}
 @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.8);font-size:10px;letter-spacing:.32em;text-indent:.32em}
 .hero-scroll .line{width:1px;height:44px;background:linear-gradient(180deg,rgba(255,255,255,.75),transparent);animation:drop 2s ease-in-out infinite}
